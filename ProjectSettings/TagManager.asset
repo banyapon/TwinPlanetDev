@@ -17,6 +17,7 @@ TagManager:
   - AIBullet
   - CameraPlayer
   - joystick
+  - Building
   layers:
   - Default
   - TransparentFX

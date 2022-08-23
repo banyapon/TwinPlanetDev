@@ -22,7 +22,8 @@ namespace Photon.Pun.Demo.PunBasics
 		[Tooltip("The distance in the local x-z plane to the target")]
 		[SerializeField]
 		private float distance = 7.0f;
-
+		Vector2 cameraDistanceMinMax = new Vector2(2f, 6f);
+		
 		[Tooltip("The height we want the camera to be above the target")]
 		[SerializeField]
 		private float height = 3.0f;
@@ -30,6 +31,7 @@ namespace Photon.Pun.Demo.PunBasics
 		[Tooltip("Allow the camera to be offseted vertically from the target, for example giving more view of the sceneray and less ground.")]
 		[SerializeField]
 		private Vector3 centerOffset = Vector3.zero;
+		Vector3 cameraDirection;
 
 		[Tooltip("Set this as false if a component of a prefab being instanciated by Photon Network, and manually call OnStartFollowing() when and if needed.")]
 		[SerializeField]
@@ -47,8 +49,6 @@ namespace Photon.Pun.Demo.PunBasics
 
 		// Cache for camera offset
 		Vector3 cameraOffset = Vector3.zero;
-
-
 		#endregion
 
 		#region MonoBehaviour Callbacks
@@ -58,6 +58,8 @@ namespace Photon.Pun.Demo.PunBasics
 		/// </summary>
 		void Start()
 		{
+			if (cameraTransform != null) cameraDirection = cameraTransform.localPosition.normalized;
+
 			// Start following the target if wanted.
 			if (followOnStart)
 			{
@@ -79,6 +81,7 @@ namespace Photon.Pun.Demo.PunBasics
 			if (isFollowing)
 			{
 				Follow();
+				CheckCameraCollision();
 			}
 		}
 
@@ -116,7 +119,6 @@ namespace Photon.Pun.Demo.PunBasics
 
 		}
 
-
 		void Cut()
 		{
 			cameraOffset.z = -distance;
@@ -126,6 +128,18 @@ namespace Photon.Pun.Demo.PunBasics
 
 			cameraTransform.LookAt(this.transform.position + centerOffset);
 		}
+
+		void CheckCameraCollision()
+        {
+			Vector3 desiredCameraPosition = transform.TransformPoint(cameraDirection * cameraDistanceMinMax.y);
+			RaycastHit hit;
+
+			if (Physics.Linecast(transform.position, desiredCameraPosition, out hit)) //Cast only building layer
+            {
+				if (hit.collider.CompareTag("Building")) distance = cameraDistanceMinMax.x;
+				else distance = cameraDistanceMinMax.y;
+			}
+        }
 		#endregion
 	}
 }
