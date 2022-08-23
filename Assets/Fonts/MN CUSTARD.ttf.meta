@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: eb6b23cd8c84a2046967731992942182
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - MN CUSTARD
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 142ff56db6daa9547b34a9b3060291ee, type: 3}
+  - {fileID: 12800000, guid: e3bcdd5b84488be459b67ec029f8a8d1, type: 3}
+  - {fileID: 12800000, guid: d35e94c518aeea14796561adb49dafae, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

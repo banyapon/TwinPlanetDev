@@ -1,0 +1,625 @@
+fileFormatVersion: 2
+guid: 38b072dadd84bec499f400f4727be19f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3864936797953365096
+    second: namsss_3
+  - first:
+      213: 1306962804698303284
+    second: namsss_4
+  - first:
+      213: -7529695383703383101
+    second: namsss_5
+  - first:
+      213: -1555771639832569494
+    second: namsss_6
+  - first:
+      213: -7753246651126028867
+    second: namsss_7
+  - first:
+      213: 1282009611131544150
+    second: namsss_8
+  - first:
+      213: 1250633973731013808
+    second: namsss_9
+  - first:
+      213: 392933551452572593
+    second: namsss_10
+  - first:
+      213: -2259122556441858458
+    second: namsss_11
+  - first:
+      213: -4584157913604731381
+    second: namsss_12
+  - first:
+      213: 7976866897422953469
+    second: namsss_13
+  - first:
+      213: -5558825427020793285
+    second: namsss_14
+  - first:
+      213: 6389284409775494129
+    second: namsss_15
+  - first:
+      213: -7769953083820724156
+    second: namsss_16
+  - first:
+      213: -5228875307516303207
+    second: namsss_17
+  - first:
+      213: 5274487153730107315
+    second: namsss_18
+  - first:
+      213: 6718404335886218746
+    second: namsss_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: namsss_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 977
+        width: 340
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3e13ba7bdda5900800000000000000
+      internalID: 674094875166237679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_1
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 885
+        width: 172
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490d61dd6af52b080800000000000000
+      internalID: -9173164320721809260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 775
+        width: 194
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e582eee8aea19d40800000000000000
+      internalID: 5589440653129057769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 652
+        width: 205
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b67a6a57cfc5ac0800000000000000
+      internalID: -3864936797953365096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_4
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 560
+        width: 403
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43bc0bc0fb3432210800000000000000
+      internalID: 1306962804698303284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_5
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 454
+        width: 356
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3167b41f5218790800000000000000
+      internalID: -7529695383703383101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_6
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 334
+        width: 156
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a691728bfe9c86ae0800000000000000
+      internalID: -1555771639832569494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_7
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 218
+        width: 222
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db565afcf3fe66490800000000000000
+      internalID: -7753246651126028867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 74
+        width: 231
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652e12ee2fc9ac110800000000000000
+      internalID: 1282009611131544150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_9
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 963
+        width: 226
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4b54419f42b5110800000000000000
+      internalID: 1250633973731013808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_10
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 852
+        width: 226
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bbc9a2bbfaf37500800000000000000
+      internalID: 392933551452572593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_11
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 739
+        width: 257
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66ee537110cf5a0e0800000000000000
+      internalID: -2259122556441858458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_12
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 614
+        width: 191
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e4b4d5aacc160c0800000000000000
+      internalID: -4584157913604731381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_13
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 515
+        width: 177
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfba7711e2683be60800000000000000
+      internalID: 7976866897422953469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_14
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 513
+        width: 133
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a340ed9b51bd2b0800000000000000
+      internalID: -5558825427020793285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_15
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 381
+        width: 186
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f31c9d915c4ba850800000000000000
+      internalID: 6389284409775494129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_16
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 268
+        width: 146
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4403a6556d49b2490800000000000000
+      internalID: -7769953083820724156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_17
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 147
+        width: 189
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 998eda09c9d4f67b0800000000000000
+      internalID: -5228875307516303207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_18
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 348
+        width: 167
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b7b172fe1eb23940800000000000000
+      internalID: 5274487153730107315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: namsss_19
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 182
+        width: 177
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af531f9d5219c3d50800000000000000
+      internalID: 6718404335886218746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      namsss_8: 1282009611131544150
+      namsss_2: 5589440653129057769
+      namsss_3: -3864936797953365096
+      namsss_1: -9173164320721809260
+      namsss_9: 1250633973731013808
+      namsss_14: -5558825427020793285
+      namsss_7: -7753246651126028867
+      namsss_17: -5228875307516303207
+      namsss_18: 5274487153730107315
+      namsss_13: 7976866897422953469
+      namsss_0: 674094875166237679
+      namsss_11: -2259122556441858458
+      namsss_6: -1555771639832569494
+      namsss_12: -4584157913604731381
+      namsss_5: -7529695383703383101
+      namsss_10: 392933551452572593
+      namsss_4: 1306962804698303284
+      namsss_16: -7769953083820724156
+      namsss_15: 6389284409775494129
+      namsss_19: 6718404335886218746
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
