@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Payload.unity
+    guid: f62d57a8c471de54c845a9778dd9d3fd
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: abf2c2f54a250d547935e2ea844a0150
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 33a69f79e2b5c4f4eb847c7005f0db01
+  - enabled: 1
+    path: Assets/Scenes/CharacterM.unity
+    guid: a9ac597adfa436b4fb6042849d012240
+  - enabled: 1
+    path: Assets/Scenes/CharacterF.unity
+    guid: e048be81ed138b14b893ab3c8ba88345
+  - enabled: 1
+    path: Assets/Scenes/Fortune.unity
+    guid: 90b27a50d1a25b447b51bab475832f9c
+  - enabled: 1
+    path: Assets/Scenes/GalleriesLafayette.unity
+    guid: f4e73d0d0eef1c547b95c83fa1e5640f
+  - enabled: 1
+    path: Assets/Scenes/GemPavilion.unity
+    guid: aaed8a28860a905489a2eff0f8a304da
+  - enabled: 1
+    path: Assets/Scenes/HeroPom.unity
+    guid: a2f0fe85121c5a34c9c7aff6a1dc9db0
+  - enabled: 1
+    path: Assets/Scenes/ParisRoad_short.unity
+    guid: 365f3d4d6907f3840980fce24e71e055
+  - enabled: 1
+    path: Assets/Scenes/MissLily.unity
+    guid: f194f71176509094c988b99d21c7c510
+  - enabled: 1
+    path: Assets/Scenes/Gallery333.unity
+    guid: ec6245a9953d7ef4a856d22e3dcecb5f
+  - enabled: 1
+    path: Assets/Scenes/Rapee.unity
+    guid: bdd6be440c239f74ab332608a9720582
+  - enabled: 1
+    path: Assets/Scenes/VIPRoom.unity
+    guid: e16d1dcbe4debc844810656f8ef7214d
+  - enabled: 1
+    path: Assets/Scenes/Photobooth.unity
+    guid: 972a21e3863e66141b1324ca9ad1515b
+  - enabled: 1
+    path: Assets/Scenes/MiniGame.unity
+    guid: 4f82d85bb7108dc4f8eedd115ddfe14e
+  - enabled: 1
+    path: Assets/Scenes/Map1.unity
+    guid: 1e4aa2079ecf4ac46b2b6a1b37eb5605
+  m_configObjects: {}
