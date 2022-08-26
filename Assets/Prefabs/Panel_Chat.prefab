@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 333.20245, y: 11676.705}
+  m_AnchoredPosition: {x: 333.20245, y: 11680.458}
   m_SizeDelta: {x: -676.2115, y: 12087.66}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5294558076932519192
@@ -281,7 +281,7 @@ RectTransform:
   m_Children:
   - {fileID: 3543248629258416967}
   m_Father: {fileID: 7347206469848920599}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -369,8 +369,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5064389433726662583}
   m_HandleRect: {fileID: 4895903645221766111}
   m_Direction: 2
-  m_Value: 0.00031673073
-  m_Size: 0.02068804
+  m_Value: -0.00000034545508
+  m_Size: 0.020685198
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -407,7 +407,7 @@ RectTransform:
   m_Children:
   - {fileID: 7289329253656044813}
   m_Father: {fileID: 7347206469848920599}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -804,12 +804,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6815726620029295133}
-  m_RootOrder: 2
+  m_Father: {fileID: 7347206469848920599}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -27.4112, y: 28.4915}
+  m_AnchoredPosition: {x: -27.411676, y: 27.495247}
   m_SizeDelta: {x: 54.824, y: 54.9911}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6508230223199396263
@@ -949,7 +949,6 @@ RectTransform:
   m_Children:
   - {fileID: 3697172943469116484}
   - {fileID: 7347206469848920599}
-  - {fileID: 7669095183659019476}
   m_Father: {fileID: 4931593817635645625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1323,6 +1322,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7669095183659019476}
   - {fileID: 8578612604783111552}
   - {fileID: 5959057657800517702}
   m_Father: {fileID: 6815726620029295133}

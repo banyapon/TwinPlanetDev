@@ -50,7 +50,8 @@ namespace AD
         private float gravityValue = 10f;
         [SerializeField] private GameObject _orientation;
         [SerializeField] private bool isWalk = false;
-        private bool isSit = false;       
+        private bool isSit = false;
+        [HideInInspector] public bool isChat = false;
         #endregion
 
         public enum AnimationName { Idle, Walk, Excited, Giving, Hug, Sit, Laugh, Hi, Marry }
@@ -91,10 +92,13 @@ namespace AD
 
                 #region AEAMETAVERSE
                 _characterController.enabled = true;
-                if(_joystick == null)
+                if (SystemInfo.deviceType == DeviceType.Handheld)
                 {
-                    GameObject joystick = GameObject.FindGameObjectWithTag("joystick") as GameObject;
-                    _joystick = joystick.GetComponent<FixedJoystick>();
+                    if (_joystick == null)
+                    {
+                        GameObject joystick = GameObject.FindGameObjectWithTag("joystick") as GameObject;
+                        _joystick = joystick.GetComponent<FixedJoystick>();
+                    }
                 }
                 //CAMERA WORK ASSIGN
                 #endregion
@@ -228,7 +232,7 @@ namespace AD
         {
             if (photonView.IsMine)
             {
-                if (isSit) return;
+                if (isSit || isChat) return;
                 Vector3 move;
                 
                 if (Input.GetAxis("Vertical") != 0.0f) //INPUT
@@ -237,6 +241,7 @@ namespace AD
                 }
                 else
                 {
+                    if (_joystick == null) return;
                     move = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
                 }
 
@@ -311,9 +316,14 @@ namespace AD
         public void StandUp()
         {
             if (!isSit) return;
-            if ((Input.GetAxisRaw("Vertical") > 0f) || _joystick.Vertical > 0f || (Input.GetKey(KeyCode.Escape)))
+            if ((Input.GetAxisRaw("Vertical") > 0f) || (Input.GetKey(KeyCode.Escape)))
             {
                 photonView.RPC("StandUp", RpcTarget.All);
+            }
+            else if(_joystick != null)
+            {
+                if (_joystick.Vertical > 0f)
+                    photonView.RPC("StandUp", RpcTarget.All);
             }
         }
 
@@ -394,9 +404,9 @@ namespace AD
                 case AnimationName.Idle: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.3f); break;
                 case AnimationName.Walk: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.3f); break;
                 case AnimationName.Sit: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.4f); break;
-                case AnimationName.Excited: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); break;
-                case AnimationName.Laugh: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); break;
-                case AnimationName.Hi: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); break;
+                case AnimationName.Excited: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
+                case AnimationName.Laugh: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
+                case AnimationName.Hi: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
                 default: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.2f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
             }
             Debug.Log(animationNow);

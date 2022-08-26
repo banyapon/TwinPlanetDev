@@ -25,6 +25,7 @@ namespace AD
         private string privateMap = "VIPRoom";
         public Chair[] chairs;
         public GameObject roomMasterPanel;
+        public GameObject joystick;
 
         //Profile Select
         public Text targetName;
@@ -48,6 +49,7 @@ namespace AD
         {
             if (main == null) main = this;
             else Destroy(gameObject);
+            if (SystemInfo.deviceType != DeviceType.Handheld) joystick.SetActive(false);
             PhotoboothController.OnPlayerInRoom += HandlePlayerInRoom;
             NetworkManager.OnPlayerIsMaster += HandlePlayerIsMaster;
             PhotoboothController.OnBgChanged += HandleBGChanged;
@@ -155,6 +157,12 @@ namespace AD
             }
             HideMenu();
         }
+
+        public void ToggleChat(bool _isChat)
+        {
+            characterControl.isChat = _isChat;
+        }
+
         public void ShowMenu(int viewID)
         {
             menuCharacterControl = FindCharacterControl(viewID);
