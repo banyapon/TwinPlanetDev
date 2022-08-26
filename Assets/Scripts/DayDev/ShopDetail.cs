@@ -27,6 +27,7 @@ public class ShopDetail : MonoBehaviour
 
     void OnMouseDown()
     {
+        #region OLD SHOP DETAIL
         if (GameObject.Find(shop_code))
         {
             Debug.Log("Exists");
@@ -46,7 +47,7 @@ public class ShopDetail : MonoBehaviour
                     shop_code == "misslilly5" || shop_code == "misslilly6" || shop_code == "misslilly7" ||
                     shop_code == "misslilly8") shop_code = "misslilly";
 
-                    string refImage = "sample/"+shop_code+"/"+ image_code;
+                    string refImage = "sample/"+ shop_code +"/"+ image_code;
                     var addSpite = Resources.Load<Sprite>(refImage);
 
                     Debug.Log(refImage);
@@ -57,6 +58,17 @@ public class ShopDetail : MonoBehaviour
             }
 
         }
+        #endregion
 
+        #region NEW SHOP DETAIL
+        if (GameObject.Find(shop_code))
+        {
+            Debug.Log("Exists");
+        }
+        else
+        {
+
+        }
+        #endregion
     }
 }

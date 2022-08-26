@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Photon.Pun.Demo.PunBasics;
 
 public class Menu_Character : MonoBehaviour
 {
-    public GameObject window_character, window_bio;
+    public CanvasGroup window_character, window_bio;
     public Text player_nickname, player_nicknamebio, player_fullname;
     public InputField player_bio;
+    public Slider _nextToggle, _backToggle;
+    public GameObject[] _catagories;
 
     public string nickname, gender, fullname, bio;
 
@@ -20,9 +23,13 @@ public class Menu_Character : MonoBehaviour
 
     void Start()
     {
-        window_character.SetActive(true);
-        window_bio.SetActive(false);
-        LoadPlayerData();       
+        //window_character.SetActive(true);
+        window_bio.blocksRaycasts = false;
+        ChangeCatagory(0);
+        LoadPlayerData();
+
+        _nextToggle.onValueChanged.AddListener((v) => NextValue(v));
+        _backToggle.onValueChanged.AddListener((v) => BackValue(v));
     }
 
     public void LoadPlayerData() 
@@ -42,24 +49,75 @@ public class Menu_Character : MonoBehaviour
         PlayerPrefs.SetString("bio", player_bio.text);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
+    #region CUSTOMIZE CATAGORIES
+    public void ChangeCatagory(int index)
+    {
+        if (_catagories[index] == null) return;
+
+        for (int i = 0; i < _catagories.Length; i++)
+        {
+            _catagories[i].SetActive(false);
+        }
+        _catagories[index].SetActive(true);
+    }
+    #endregion
+
+    #region TOGGLE UI
+    void NextValue(float value)
+    {
+        window_character.alpha = 1f - value;
+        window_bio.alpha = value;
+
+        if (value > 0.9f)
+        {
+            ToggleMenu(true);
+            _nextToggle.value = 0;
+            window_character.alpha = 0f;
+            window_bio.alpha = 1f;
+        }           
+    }
+
+    public void ReturnNext(int value) => _nextToggle.value = value;
+
+    void BackValue(float value)
+    {       
+        window_bio.alpha = value;
+        window_character.alpha = 1f - value;
+
+        if (value < 0.1f)
+        {
+            ToggleMenu(false);
+            _backToggle.value = 1;
+            window_bio.alpha = 0f;
+            window_character.alpha = 1f;
+        }
+    }
+
+    public void ReturnBack(int value) => _backToggle.value = value;
+
     public void ToggleMenu(bool toggle) 
     {
         if (toggle)
         {
-            window_character.SetActive(false);
-            window_bio.SetActive(true);
+            _nextToggle.gameObject.SetActive(false);
+            _backToggle.gameObject.SetActive(true);
+            window_bio.blocksRaycasts = true;
+            //window_character.SetActive(false);
+            //window_bio.SetActive(true);           
         }
         else 
         {
-            window_character.SetActive(true);
-            window_bio.SetActive(false);
+            _nextToggle.gameObject.SetActive(true);
+            _backToggle.gameObject.SetActive(false);
+            window_bio.blocksRaycasts = false;
+            //window_character.SetActive(true);
+            //window_bio.SetActive(false);
         }
-
     }
+    #endregion
 }

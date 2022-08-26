@@ -16,8 +16,7 @@ public class ShopWindows : MonoBehaviour
     void Start()
     {
         authen_code = PlayerPrefs.GetString("authen_code");
-        payment_url = base_url+"?PRODUCTCODE="+this.gameObject.name+"&USERLOGIN="+authen_code;
-        
+        payment_url = base_url+"?PRODUCTCODE="+this.gameObject.name+"&USERLOGIN="+authen_code;        
     }
 
     IEnumerator ResponseData(string URL)
