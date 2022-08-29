@@ -82,6 +82,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\Scripts\DaydevShooter\AIHealth.cs" />
     <Compile Include="Assets\Scripts\DayDev\360CaptureByDaydev\PanoramaCapture.cs" />
+    <Compile Include="Assets\Scripts\WinterFashion\ContestBoard.cs" />
     <Compile Include="Assets\Scripts\DayDev\CameraWork.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\Codes\SoundControl.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
+    <Compile Include="Assets\Scripts\WinterFashion\ContestWindow.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\Scripts\DaydevShooter\PointWalking.cs" />
     <Compile Include="Assets\Codes\AD\PreLogin.cs" />
@@ -212,7 +214,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-    <Compile Include="Assets\Scripts\WinterFashion\ContestBoard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
