@@ -104,6 +104,7 @@ public class ContestWindow : MonoBehaviour
         }
 
         JSONNode contestUserListInfo = JSON.Parse(requestContestList.downloadHandler.text);
+        Debug.Log(contestUserListInfo);
         JSONNode _userCount = contestUserListInfo["Message"];
 
         for (int i = 0; i < _userCount.Count; i++) //IMPORT ALL USER ID & USER CODE
