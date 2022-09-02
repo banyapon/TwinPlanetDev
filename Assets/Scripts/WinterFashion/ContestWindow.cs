@@ -7,11 +7,17 @@ using SimpleJSON;
 
 public class ContestWindow : MonoBehaviour
 {
+    [Header("BILLBOARD UI")]
     [SerializeField] private Image _contestImg;
     [SerializeField] private Sprite _sprite1, _sprite2;
     [SerializeField] private Text _teamName, _contestName, _institution;
     [SerializeField] private int _index;
     [SerializeField] private Button[] _buttons;
+
+    [Header("TERMS & CONDITIONS")]
+    [SerializeField] private GameObject _conditionCanvas;
+    [SerializeField] private Image _confirmWaitButton;
+    [SerializeField] private Button _confirmButton;
 
     [Header("CONTEST API")]
     public const string getContestList = "http://147.50.231.95:8001/api/RequestContest.ashx";
@@ -26,24 +32,54 @@ public class ContestWindow : MonoBehaviour
 
     void Start()
     {
+        _conditionCanvas.SetActive(true);
+        _confirmButton.interactable = false;
+        StartCoroutine(ConditionCooldown());
+
         _contestImg.sprite = null;
         _sprite1 = null;
         _sprite2 = null;
-        _teamName.text = "";
+        //_teamName.text = "";
         _contestName.text = "";
-        _institution.text = "";
+        //_institution.text = "";
 
         StartCoroutine(GetContestList());
     }
+
+    #region TERMS AND CONDITIONS
+
+    IEnumerator ConditionCooldown()
+    {
+        float waitTime = 3f;
+        float counter = waitTime;
+
+        while (counter > 0)
+        {
+            counter -= Time.deltaTime;
+            _confirmWaitButton.fillAmount = counter / waitTime;
+            yield return null;
+        }
+
+        _confirmButton.interactable = true;
+    }
+
+    public void CloseCondition()
+    {
+        _conditionCanvas.SetActive(false);
+    }
+
+    #endregion
+
+    #region BILLBOARD MANAGER
 
     public void Show()
     {
         _contestImg.sprite = null;
         _sprite1 = null;
         _sprite2 = null;
-        _teamName.text = "Loading..";
-        _contestName.text = "ชื่อทีม : Loading..";
-        _institution.text = "สถาบัน : Loading..";
+        //_teamName.text = "Loading..";
+        _contestName.text = "ชื่อผลงาน : Loading..";
+        //_institution.text = "สถาบัน : Loading..";
 
         StartCoroutine(GetContestInfo(_index));
     }
@@ -89,6 +125,8 @@ public class ContestWindow : MonoBehaviour
             _buttons[i].interactable = isActive;
         }
     }
+
+    #endregion
 
     #region API WEB REQUEST
     IEnumerator GetContestList()
@@ -145,9 +183,9 @@ public class ContestWindow : MonoBehaviour
         string teamName = contestInfo["teamname"].ToString().Replace('"',' ').Trim();        
         string institution = contestInfo["institution"].ToString().Replace('"', ' ').Trim();
 
-        _contestName.text = contestName;
-        _teamName.text = "ชื่อทีม : " + teamName;
-        _institution.text = "สถาบัน : " + institution;
+        _contestName.text = "ชื่อผลงาน : " + contestName;
+        //_teamName.text = "ชื่อทีม : " + teamName;
+        //_institution.text = "สถาบัน : " + institution;
 
         StartCoroutine(GetContestImage(index));
         ButtonInteractable(true);
@@ -178,7 +216,7 @@ public class ContestWindow : MonoBehaviour
         _sprite1 = Sprite.Create(image1, new Rect(0, 0, image1.width, image1.height), Vector2.zero);
         _sprite2 = Sprite.Create(image2, new Rect(0, 0, image2.width, image2.height), Vector2.zero);
 
-        ShowImage(1);
+        ShowImage(2);
     }
     #endregion   
 }

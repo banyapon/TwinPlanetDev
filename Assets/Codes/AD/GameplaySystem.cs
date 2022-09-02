@@ -160,7 +160,7 @@ namespace AD
 
         public void ToggleChat(bool _isChat)
         {
-            characterControl.isChat = _isChat;
+            characterControl.isStop = _isChat;
         }
 
         public void ShowMenu(int viewID)

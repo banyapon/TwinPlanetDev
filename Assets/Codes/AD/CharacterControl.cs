@@ -51,7 +51,7 @@ namespace AD
         [SerializeField] private GameObject _orientation;
         [SerializeField] private bool isWalk = false;
         private bool isSit = false;
-        [HideInInspector] public bool isChat = false;
+        [HideInInspector] public bool isStop = false;
         #endregion
 
         public enum AnimationName { Idle, Walk, Excited, Giving, Hug, Sit, Laugh, Hi, Marry }
@@ -149,10 +149,12 @@ namespace AD
         }
 
         private void LateUpdate() => nameTMP.transform.rotation = camera.transform.rotation;
+
         private void GetMicStage()
         {
             ToggleMic(playerMicToggle.toggleStage);
         }
+
         private void CharactorInput()
         {
             if (playerMicToggle != null) GetMicStage();
@@ -232,10 +234,10 @@ namespace AD
         {
             if (photonView.IsMine)
             {
-                if (isSit || isChat) return;
+                if (isSit || isStop) return;
                 Vector3 move;
                 
-                if (Input.GetAxis("Vertical") != 0.0f) //INPUT
+                if (Input.GetAxis("Vertical") != 0.0f || Input.GetAxis("Horizontal") != 0.0f) //INPUT
                 {                  
                     move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
                 }
@@ -401,13 +403,13 @@ namespace AD
             animationCount++;
             switch (animationNow)
             {
-                case AnimationName.Idle: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.3f); break;
-                case AnimationName.Walk: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.3f); break;
-                case AnimationName.Sit: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.4f); break;
-                case AnimationName.Excited: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
-                case AnimationName.Laugh: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
-                case AnimationName.Hi: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
-                default: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.2f); StartCoroutine(PlayAnimationIdle(animationCount)); break;
+                case AnimationName.Idle: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.3f); isStop = false; break;
+                case AnimationName.Walk: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.3f); isStop = false; break;
+                case AnimationName.Sit: animator.CrossFadeInFixedTime((holdingFlower ? "H" : "") + animationNow.ToString(), 0.4f); isStop = true; isWalk = false; break;
+                case AnimationName.Excited: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); isStop = true; isWalk = false; break;
+                case AnimationName.Laugh: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); isStop = true; isWalk = false; break;
+                case AnimationName.Hi: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.3f); StartCoroutine(PlayAnimationIdle(animationCount)); isStop = true; isWalk = false; break;
+                default: animator.CrossFadeInFixedTime(animationNow.ToString(), 0.2f); StartCoroutine(PlayAnimationIdle(animationCount)); isStop = true; isWalk = false; break;
             }
             Debug.Log(animationNow);
         }
