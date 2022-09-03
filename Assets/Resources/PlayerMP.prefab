@@ -14648,7 +14648,7 @@ MonoBehaviour:
   _turnSmoothTime: 0.15
   _orientation: {fileID: 8567543503708808956}
   isWalk: 0
-  isChat: 0
+  isStop: 0
 --- !u!114 &90926039736359683
 MonoBehaviour:
   m_ObjectHideFlags: 0

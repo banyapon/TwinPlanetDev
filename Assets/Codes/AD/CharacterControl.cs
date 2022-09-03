@@ -486,15 +486,16 @@ namespace AD
 
         [PunRPC]
         public void StandUp(PhotonMessageInfo info)
-        {
-            this._characterController.enabled = true;
+        {            
             Chair chair = this.chair;
-            //this.transform.position = chair.transform.position;
+            Vector3 chairPos = chair.transform.position;
+            this.transform.position = new Vector3(transform.position.x + UnityEngine.Random.Range(0.5f, 1f), transform.position.y, transform.position.z + UnityEngine.Random.Range(0.5f, 1f));
             chair.collider.enabled = true;
             chair.characterControl = null;
             this.chair = null;
             ChangeAnimation(AnimationName.Idle);
-            this.isSit = false;          
+            this.isSit = false;
+            this._characterController.enabled = true;
         }
 
         [PunRPC]
