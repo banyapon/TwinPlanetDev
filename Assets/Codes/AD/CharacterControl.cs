@@ -321,11 +321,15 @@ namespace AD
             if ((Input.GetAxisRaw("Vertical") > 0f) || (Input.GetKey(KeyCode.Escape)))
             {
                 photonView.RPC("StandUp", RpcTarget.All);
+                this._characterController.enabled = true;
             }
             else if(_joystick != null)
             {
                 if (_joystick.Vertical > 0f)
+                {
                     photonView.RPC("StandUp", RpcTarget.All);
+                    this._characterController.enabled = true;
+                }                  
             }
         }
 
@@ -494,8 +498,7 @@ namespace AD
             chair.characterControl = null;
             this.chair = null;
             ChangeAnimation(AnimationName.Idle);
-            this.isSit = false;
-            this._characterController.enabled = true;
+            this.isSit = false;            
         }
 
         [PunRPC]
