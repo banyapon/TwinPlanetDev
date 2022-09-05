@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class ProductData: MonoBehaviour
+public class ProductData
 {
     public string code;
     public string name;
@@ -11,13 +11,13 @@ public class ProductData: MonoBehaviour
 }
 
 [System.Serializable]
-public class GetProductMessage: MonoBehaviour
+public class GetProductMessage
 {
     public string Code;
     public ProductData[] Message;
 }
 [System.Serializable]
-public class AddToBasketResponse : MonoBehaviour
+public class AddToBasketResponse
 {
     public string Code;
     public string Message;

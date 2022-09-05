@@ -60,15 +60,6 @@ public class ShopDetail : MonoBehaviour
         }
         #endregion
 
-        #region NEW SHOP DETAIL
-        if (GameObject.Find(shop_code))
-        {
-            Debug.Log("Exists");
-        }
-        else
-        {
 
-        }
-        #endregion
     }
 }

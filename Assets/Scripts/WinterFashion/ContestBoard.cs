@@ -6,7 +6,7 @@ using AD;
 public class ContestBoard : MonoBehaviour
 {
     [SerializeField] private GameObject _contestWindow;
-    private CharacterControl _characterControl;
+    [SerializeField] private CharacterControl _characterControl;
 
     void Start()
     {
@@ -16,17 +16,16 @@ public class ContestBoard : MonoBehaviour
     public void ToggleContestWindow(bool isActive)
     {
         _contestWindow.SetActive(isActive);
-        _characterControl = null;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            _characterControl = other.GetComponent<CharacterControl>();
+            this._characterControl = other.GetComponent<CharacterControl>();
 
             if (_characterControl.photonView.IsMine)
-            {                
+            {
                 ToggleContestWindow(true);
             }
         }
