@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private string _shopCode;
+    private string _userId;
+    private string _authenCode;
 
     [Header("USER INTERFACE")]
     [SerializeField] private GameObject _btnProductPrefab;
@@ -17,6 +19,8 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        _userId = PlayerPrefs.GetString("nickname");
+
         _nameTag.text = null;
         _priceTag.text = null;
         _productImage.sprite = null;
@@ -44,7 +48,7 @@ public class ShopManager : MonoBehaviour
         _addToBasket.onClick.RemoveAllListeners();
         _addToBasket.onClick.AddListener(() => 
         {
-            StartCoroutine(TwinPlanetApi.AddToBasket(product.code, "user1", OnAddToBasketResp));
+            StartCoroutine(TwinPlanetApi.AddToBasket(product.code, _userId, OnAddToBasketResp));
         });
     }
 
@@ -61,6 +65,6 @@ public class ShopManager : MonoBehaviour
 
     public void OpenBasket()
     {
-        Application.OpenURL("http://147.50.231.95/Pay.aspx?USERLOGIN=");
+        Application.OpenURL("http://147.50.231.95/Pay.aspx?USERLOGIN=" + _userId);
     }
 }

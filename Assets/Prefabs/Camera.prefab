@@ -155,7 +155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4014679027429391605}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df0ab14e1c875c64b89e2188204c0c04, type: 3}
   m_Name: 
@@ -168,7 +168,7 @@ MonoBehaviour:
   hight: 1.7
   rotationSpeed: 2
   distanceMin: 2
-  distanceMax: 15
+  distanceMax: 3
 --- !u!1001 &5971387510728549058
 PrefabInstance:
   m_ObjectHideFlags: 0

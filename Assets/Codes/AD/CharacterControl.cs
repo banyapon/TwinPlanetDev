@@ -52,6 +52,8 @@ namespace AD
         [SerializeField] private bool isWalk = false;
         private bool isSit = false;
         [HideInInspector] public bool isStop = false;
+        public enum CameraType { OLD_CAMERA, NEW_CAMERA };
+        public CameraType cameraType;
         #endregion
 
         public enum AnimationName { Idle, Walk, Excited, Giving, Hug, Sit, Laugh, Hi, Marry }
@@ -83,7 +85,7 @@ namespace AD
             if (photonView.IsMine)
             {
                 gameObject.AddComponent<AudioListener>();
-                //camera.GetComponent<CameraControl>().Setup(transform);
+                if(cameraType == CameraType.OLD_CAMERA) camera.GetComponent<CameraControl>().Setup(transform);
                 recorder = GameObject.FindObjectOfType<Recorder>();
                 listener = GameObject.FindObjectOfType<Listener>();
                 RefreshMicrophonesButtonOnClickHandler();
@@ -111,17 +113,20 @@ namespace AD
                 _characterController.enabled = false;
             }
 
-            var _cameraWork = gameObject.GetComponent<CameraWork>();          
-            if (_cameraWork != null)
+            if(cameraType == CameraType.NEW_CAMERA)
             {
-                if (photonView.IsMine)
+                var _cameraWork = gameObject.GetComponent<CameraWork>();
+                if (_cameraWork != null)
                 {
-                    _cameraWork.OnStartFollowing();
+                    if (photonView.IsMine)
+                    {
+                        _cameraWork.OnStartFollowing();
+                    }
                 }
-            }
-            else
-            {
-                Debug.LogError("<Color=Red><b>Missing</b></Color> CameraWork Component on player Prefab.", this);
+                else
+                {
+                    Debug.LogError("<Color=Red><b>Missing</b></Color> CameraWork Component on player Prefab.", this);
+                }
             }
         }
 

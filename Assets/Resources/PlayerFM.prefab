@@ -20688,6 +20688,7 @@ MonoBehaviour:
   _orientation: {fileID: 3905007725871455364}
   isWalk: 0
   isStop: 0
+  cameraType: 0
 --- !u!114 &8333985296614885837
 MonoBehaviour:
   m_ObjectHideFlags: 0
