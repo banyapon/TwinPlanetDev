@@ -17,6 +17,10 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        _nameTag.text = null;
+        _priceTag.text = null;
+        _productImage.sprite = null;
+
         StartCoroutine(TwinPlanetApi.RequestProductByShop(_shopCode, InitializeProductFromShopData));
     }
 
@@ -35,6 +39,7 @@ public class ShopManager : MonoBehaviour
     {
         _nameTag.text = product.name;
         _priceTag.text = product.price;
+        _productImage.sprite = null;
         StartCoroutine(TwinPlanetApi.RequestProductImage(product.code, SetProductImage));
         _addToBasket.onClick.RemoveAllListeners();
         _addToBasket.onClick.AddListener(() => 
