@@ -10,7 +10,6 @@ public class ContestWindow : MonoBehaviour
     [Header("BILLBOARD UI")]
     [SerializeField] private Image _contestImg;
     [SerializeField] private Sprite _sprite1, _sprite2;
-    [SerializeField] private GameObject _loadingImg;
     [SerializeField] private Text _teamName, _contestName, _institution;
     [SerializeField] private int _index;
     [SerializeField] private Button[] _buttons;
@@ -40,10 +39,9 @@ public class ContestWindow : MonoBehaviour
         _contestImg.sprite = null;
         _sprite1 = null;
         _sprite2 = null;
-        //_teamName.text = "";
+        _teamName.text = "";
         _contestName.text = "";
         //_institution.text = "";
-        _loadingImg.SetActive(true);
 
         StartCoroutine(GetContestList());
     }
@@ -74,16 +72,13 @@ public class ContestWindow : MonoBehaviour
 
     #region BILLBOARD MANAGER
 
+    public void ShowList()
+    {
+
+    }
+
     public void Show()
     {
-        _contestImg.sprite = null;
-        _sprite1 = null;
-        _sprite2 = null;
-        //_teamName.text = "Loading..";
-        _contestName.text = "ชื่อผลงาน : Loading..";
-        //_institution.text = "สถาบัน : Loading..";
-        _loadingImg.SetActive(true);
-
         StartCoroutine(GetContestInfo(_index));
     }
 
@@ -115,7 +110,6 @@ public class ContestWindow : MonoBehaviour
 
     public void ShowImage(int index)
     {
-        _loadingImg.SetActive(false);
         if (index == 1)
             _contestImg.sprite = _sprite1;
         else
@@ -124,10 +118,10 @@ public class ContestWindow : MonoBehaviour
 
     private void ButtonInteractable(bool isActive)
     {
-        for (int i = 0; i < _buttons.Length; i++)
+        /*for (int i = 0; i < _buttons.Length; i++)
         {
             _buttons[i].interactable = isActive;
-        }
+        }*/
     }
 
     #endregion
