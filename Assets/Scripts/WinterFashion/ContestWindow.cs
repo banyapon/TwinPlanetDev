@@ -8,6 +8,8 @@ using SimpleJSON;
 public class ContestWindow : MonoBehaviour
 {
     [Header("BILLBOARD UI")]
+    [SerializeField] private GameObject _contestWindow;
+    [SerializeField] private GameObject _contestList;
     [SerializeField] private Image _contestImg;
     [SerializeField] private Sprite _sprite1, _sprite2;
     [SerializeField] private Text _teamName, _contestName, _institution;
@@ -20,20 +22,15 @@ public class ContestWindow : MonoBehaviour
     [SerializeField] private Button _confirmButton;
 
     [Header("CONTEST API")]
-    public const string getContestList = "http://147.50.231.95:8001/api/RequestContest.ashx";
     public const string getContestByID = "http://147.50.231.95:8001/api/RequestContestByID.ashx?ID=";
     public const string getContestByUserCode = "http://147.50.231.95:8001/api/RequestContestByUsercode.ashx?CODE=";
     public const string getContestImage = "http://147.50.231.95:8001/api/DownloadImageContest.ashx?";
 
     [Header("CONTEST INFO")]
-    [SerializeField] private int userCount;
-    [SerializeField] private List<string> userID = new List<string>();
-    [SerializeField] private List<string> userCode = new List<string>();
+    [SerializeField] private string userID;
 
     void Start()
-    {
-        _conditionCanvas.SetActive(true);
-        _confirmButton.interactable = false;
+    {        
         StartCoroutine(ConditionCooldown());
 
         _contestImg.sprite = null;
@@ -43,13 +40,21 @@ public class ContestWindow : MonoBehaviour
         _contestName.text = "";
         //_institution.text = "";
 
-        StartCoroutine(GetContestList());
+        //StartCoroutine(GetContestList());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Alpha1))
+            Debug.Log("Press");
     }
 
     #region TERMS AND CONDITIONS
 
     IEnumerator ConditionCooldown()
     {
+        _conditionCanvas.SetActive(true);
+        _confirmButton.interactable = false;
         float waitTime = 3f;
         float counter = waitTime;
 
@@ -71,41 +76,29 @@ public class ContestWindow : MonoBehaviour
     #endregion
 
     #region BILLBOARD MANAGER
-
-    public void ShowList()
+    public void Show(string _userId)
     {
-
-    }
-
-    public void Show()
-    {
-        StartCoroutine(GetContestInfo(_index));
-    }
-
-    public void OnClickNext()
-    {
-        if (_index >= userCount - 1) _index = 0;
-        else _index++;
-
-        Show();
-    }
-
-    public void OnClickBack()
-    {
-        if (_index <= 0) _index = userCount - 1;
-        else _index--;
-
-        Show();
+        _contestWindow.SetActive(true);
+        userID = _userId;
+        StartCoroutine(GetContestInfo(_userId));
+        Debug.Log("Showed");
     }
 
     public void OnClickPDF()
     {
-        Application.OpenURL(getContestImage + "ID=" + userID[_index] + "&CODE=" + 1);
+        Application.OpenURL(getContestImage + "ID=" + userID + "&CODE=" + 1);
     }
 
     public void OnClickClose()
     {
-        FindObjectOfType<ContestBoard>().ToggleContestWindow(false);
+        _contestImg.sprite = null;
+        _sprite1 = null;
+        _sprite2 = null;
+        _teamName.text = "";
+        _contestName.text = "";
+
+        _contestWindow.SetActive(false);
+        _contestList.SetActive(true);
     }
 
     public void ShowImage(int index)
@@ -122,48 +115,16 @@ public class ContestWindow : MonoBehaviour
         {
             _buttons[i].interactable = isActive;
         }*/
+        
     }
 
     #endregion
 
     #region API WEB REQUEST
-    IEnumerator GetContestList()
-    {
-        UnityWebRequest requestContestList = UnityWebRequest.Get(getContestList);
-
-        yield return requestContestList.SendWebRequest();
-
-        if(requestContestList.isNetworkError || requestContestList.isHttpError)
-        {
-            Debug.LogError(requestContestList.error);
-            yield break;
-        }
-
-        JSONNode contestUserListInfo = JSON.Parse(requestContestList.downloadHandler.text);
-        Debug.Log(contestUserListInfo);
-        JSONNode _userCount = contestUserListInfo["Message"];
-
-        for (int i = 0; i < _userCount.Count; i++) //IMPORT ALL USER ID & USER CODE
-        {
-            userID.Add(_userCount[i]["docno"].ToString().Replace('"', ' ').Trim());
-            userCode.Add(_userCount[i]["uscode"].ToString().Replace('"', ' ').Trim());
-
-            if (_userCount[i]["image1"].ToString() == "null") //REMOVE USER WHO DIDN'T IMPORT CONTEST IMAGE
-            {
-                userID.RemoveRange(userID.Count - 1, 1);
-                userCode.RemoveRange(userCode.Count - 1, 1);
-            }
-        }
-        userCount = userID.Count;
-
-        Debug.Log("Loaded Contest List");
-        Show();
-    }
-
-    IEnumerator GetContestInfo(int index)
+    IEnumerator GetContestInfo(string _userId)
     {
         ButtonInteractable(false);
-        UnityWebRequest requestContestID = UnityWebRequest.Get(getContestByID + userID[index]);
+        UnityWebRequest requestContestID = UnityWebRequest.Get(getContestByID + _userId);
 
         yield return requestContestID.SendWebRequest();
 
@@ -181,18 +142,18 @@ public class ContestWindow : MonoBehaviour
         string teamName = contestInfo["teamname"].ToString().Replace('"',' ').Trim();        
         string institution = contestInfo["institution"].ToString().Replace('"', ' ').Trim();
 
-        _contestName.text = "ชื่อผลงาน : " + contestName;
-        //_teamName.text = "ชื่อทีม : " + teamName;
+        _contestName.text = contestName;
+        _teamName.text = teamName;
         //_institution.text = "สถาบัน : " + institution;
 
-        StartCoroutine(GetContestImage(index));
+        StartCoroutine(GetContestImage(_userId));
         ButtonInteractable(true);
     }
 
-    IEnumerator GetContestImage(int index)
+    IEnumerator GetContestImage(string _userId)
     {
         //REQUEST IMAGE 1
-        UnityWebRequest requestContestImage1 = UnityWebRequestTexture.GetTexture(getContestImage + "ID=" + userID[index] + "&CODE=" + 2);   
+        UnityWebRequest requestContestImage1 = UnityWebRequestTexture.GetTexture(getContestImage + "ID=" + _userId + "&CODE=" + 2);   
         yield return requestContestImage1.SendWebRequest();
         if(requestContestImage1.isNetworkError || requestContestImage1.isHttpError)
         {
@@ -201,7 +162,7 @@ public class ContestWindow : MonoBehaviour
         }
 
         //REQUEST IMAGE 2
-        UnityWebRequest requestContestImage2 = UnityWebRequestTexture.GetTexture(getContestImage + "ID=" + userID[index] + "&CODE=" + 3);
+        UnityWebRequest requestContestImage2 = UnityWebRequestTexture.GetTexture(getContestImage + "ID=" + _userId + "&CODE=" + 3);
         yield return requestContestImage2.SendWebRequest();
         if(requestContestImage2.isNetworkError || requestContestImage2.isHttpError)
         {

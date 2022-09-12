@@ -22,8 +22,12 @@ public class ContestList : MonoBehaviour
     [SerializeField] private GameObject[] _modelList;
     [SerializeField] private int _index;
 
+    private ContestWindow _contestWindow;
+
     void Start()
     {
+        _contestWindow = FindObjectOfType<ContestWindow>();
+
         for (int i = 0; i < 4; i++)
         {
             Image img = _modelList[i].transform.Find("Frame/Image").GetComponent<Image>();
@@ -42,12 +46,18 @@ public class ContestList : MonoBehaviour
         {
             Image img = _modelList[i].transform.Find("Frame/Image").GetComponent<Image>();
             Text text = _modelList[i].transform.Find("Tag/Text").GetComponent<Text>();
+            _modelList[i].GetComponent<Button>().onClick.RemoveAllListeners();
 
             img.sprite = null;
             text.text = "loading..";
         }
 
         StartCoroutine(GetContestImage(isNext));
+    }
+
+    public void Close()
+    {
+        FindObjectOfType<ContestBoard>().ToggleContestWindow(false);
     }
 
     IEnumerator GetContestList()
@@ -109,6 +119,7 @@ public class ContestList : MonoBehaviour
             JSONNode contestInfoList = JSON.Parse(requestContestID.downloadHandler.text);
             JSONNode contestInfo = contestInfoList["Message"][0];
             contestName[i] = contestInfo["teamname"].ToString().Replace('"', ' ').Trim();
+            _modelList[i].GetComponent<Button>().onClick.AddListener(() => _contestWindow.Show(contestInfo["docno"]));
 
             if (isNext)
             {
@@ -126,6 +137,8 @@ public class ContestList : MonoBehaviour
         {           
             Image img = _modelList[i].transform.Find("Frame/Image").GetComponent<Image>();
             Text text = _modelList[i].transform.Find("Tag/Text").GetComponent<Text>();
+            
+            _modelList[i].GetComponent<Button>().onClick.AddListener(() => this.gameObject.SetActive(false));
 
             int x = i;
             if (!isNext) x = 4 - i - 1;
