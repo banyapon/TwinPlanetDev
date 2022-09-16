@@ -17,6 +17,7 @@ public class ContestList : MonoBehaviour
     public List<string> userCode = new List<string>();
     public List<string> contestName = new List<string>();
     public List<Sprite> sprite = new List<Sprite>();
+    public List<string> ignoreList = new List<string>();
 
     [Header("USER INTERFACE")]
     [SerializeField] private GameObject[] _modelList;
@@ -85,6 +86,16 @@ public class ContestList : MonoBehaviour
             {
                 userID.RemoveRange(userID.Count - 1, 1);
                 userCode.RemoveRange(userCode.Count - 1, 1);
+            }
+
+            for (int x = 0; x < ignoreList.Count; x++)
+            {
+                if (_userCount[i]["teamname"].ToString() == ignoreList[x])
+                {
+                    userID.RemoveRange(userID.Count - 1, 1);
+                    userCode.RemoveRange(userCode.Count - 1, 1);
+                    break;
+                }
             }
         }
         userCount = userID.Count;
