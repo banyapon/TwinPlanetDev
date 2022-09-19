@@ -12,19 +12,22 @@ public class ContestWindow : MonoBehaviour
     [SerializeField] private GameObject _contestList;
     [SerializeField] private Image _contestImg;
     [SerializeField] private Sprite _sprite1, _sprite2;
-    [SerializeField] private Text _teamName, _contestName, _institution;
+    [SerializeField] private Text _teamName, _contestName, _institution, _voteStatus;
+    [SerializeField] private Button _voteButton;
     [SerializeField] private int _index;
-    [SerializeField] private Button[] _buttons;
 
     [Header("TERMS & CONDITIONS")]
     [SerializeField] private GameObject _conditionCanvas;
     [SerializeField] private Image _confirmWaitButton;
     [SerializeField] private Button _confirmButton;
 
-    [Header("CONTEST API")]
-    public const string getContestByID = "http://147.50.231.95:8001/api/RequestContestByID.ashx?ID=";
-    public const string getContestByUserCode = "http://147.50.231.95:8001/api/RequestContestByUsercode.ashx?CODE=";
-    public const string getContestImage = "http://147.50.231.95:8001/api/DownloadImageContest.ashx?";
+    [Header("VOTE API")]
+    public const string voteApi = "https://twinplanetonline.com/api/fashion/vote.php?email=";
+    public const string apiKey = "twinplanet0x156xxee011";
+    [HideInInspector] public string characterImage;
+    [HideInInspector] public string designImage;
+    [HideInInspector] public string inspirePdf;
+    [HideInInspector] public string contestID;
 
     [Header("CONTEST INFO")]
     [SerializeField] private string userID;
@@ -36,7 +39,7 @@ public class ContestWindow : MonoBehaviour
         _contestImg.sprite = null;
         _sprite1 = null;
         _sprite2 = null;
-        _teamName.text = "";
+        //_teamName.text = "";
         _contestName.text = "";
         //_institution.text = "";
 
@@ -76,17 +79,22 @@ public class ContestWindow : MonoBehaviour
     #endregion
 
     #region BILLBOARD MANAGER
-    public void Show(string _userId)
+    public void Show(string image1, string image2, string pdf, string name, string id)
     {
         _contestWindow.SetActive(true);
-        userID = _userId;
-        StartCoroutine(GetContestInfo(_userId));
+        characterImage = image1;
+        designImage = image2;
+        inspirePdf = pdf;
+        contestID = id;
+        _contestName.text = name;
+
+        StartCoroutine(GetContestImage());
         Debug.Log("Showed");
     }
 
     public void OnClickPDF()
     {
-        Application.OpenURL(getContestImage + "ID=" + userID + "&CODE=" + 1);
+        Application.OpenURL(inspirePdf);
     }
 
     public void OnClickClose()
@@ -94,8 +102,13 @@ public class ContestWindow : MonoBehaviour
         _contestImg.sprite = null;
         _sprite1 = null;
         _sprite2 = null;
-        _teamName.text = "";
+        //_teamName.text = "";
         _contestName.text = "";
+        _voteStatus.text = "";
+        characterImage = null;
+        designImage = null;
+        inspirePdf = null;
+        _voteButton.interactable = true;
 
         _contestWindow.SetActive(false);
         _contestList.SetActive(true);
@@ -109,51 +122,33 @@ public class ContestWindow : MonoBehaviour
             _contestImg.sprite = _sprite2;
     }
 
-    private void ButtonInteractable(bool isActive)
+    public void Vote()
     {
-        /*for (int i = 0; i < _buttons.Length; i++)
+        _voteButton.interactable = false;
+        StartCoroutine(GetVoteCheck());
+    }
+
+    public void VoteResult(bool isSuccess)
+    {
+        if (isSuccess)
         {
-            _buttons[i].interactable = isActive;
-        }*/
-        
+            _voteStatus.color = Color.green;
+            _voteStatus.text = "โหวตสำเร็จ!";
+        }
+        else
+        {
+            _voteStatus.color = Color.red;
+            _voteStatus.text = "ไม่สามารถโหวตได้อีก";
+        }
     }
 
     #endregion
 
     #region API WEB REQUEST
-    IEnumerator GetContestInfo(string _userId)
-    {
-        ButtonInteractable(false);
-        UnityWebRequest requestContestID = UnityWebRequest.Get(getContestByID + _userId);
-
-        yield return requestContestID.SendWebRequest();
-
-        if(requestContestID.isNetworkError || requestContestID.isHttpError)
-        {
-            Debug.LogError(requestContestID.error);
-            yield break;
-        }
-
-        JSONNode contestInfoList = JSON.Parse(requestContestID.downloadHandler.text);
-        JSONNode contestInfo = contestInfoList["Message"][0];
-
-        //GET STRING FROM CONTEST API
-        string contestName = contestInfo["contestname"].ToString().Replace('"', ' ').Trim();
-        string teamName = contestInfo["teamname"].ToString().Replace('"',' ').Trim();        
-        string institution = contestInfo["institution"].ToString().Replace('"', ' ').Trim();
-
-        _contestName.text = contestName;
-        _teamName.text = teamName;
-        //_institution.text = "สถาบัน : " + institution;
-
-        StartCoroutine(GetContestImage(_userId));
-        ButtonInteractable(true);
-    }
-
-    IEnumerator GetContestImage(string _userId)
+    IEnumerator GetContestImage()
     {
         //REQUEST IMAGE 1
-        UnityWebRequest requestContestImage1 = UnityWebRequestTexture.GetTexture(getContestImage + "ID=" + _userId + "&CODE=" + 2);   
+        UnityWebRequest requestContestImage1 = UnityWebRequestTexture.GetTexture(characterImage);   
         yield return requestContestImage1.SendWebRequest();
         if(requestContestImage1.isNetworkError || requestContestImage1.isHttpError)
         {
@@ -162,7 +157,7 @@ public class ContestWindow : MonoBehaviour
         }
 
         //REQUEST IMAGE 2
-        UnityWebRequest requestContestImage2 = UnityWebRequestTexture.GetTexture(getContestImage + "ID=" + _userId + "&CODE=" + 3);
+        UnityWebRequest requestContestImage2 = UnityWebRequestTexture.GetTexture(designImage);
         yield return requestContestImage2.SendWebRequest();
         if(requestContestImage2.isNetworkError || requestContestImage2.isHttpError)
         {
@@ -176,6 +171,34 @@ public class ContestWindow : MonoBehaviour
         _sprite2 = Sprite.Create(image2, new Rect(0, 0, image2.width, image2.height), Vector2.zero);
 
         ShowImage(2);
+    }
+
+    IEnumerator GetVoteCheck()
+    {
+        UnityWebRequest requestVoteAPI = UnityWebRequest.Get(voteApi + PlayerPrefs.GetString("email") + "&code=" + contestID + "&api_key=" + apiKey);
+        yield return requestVoteAPI.SendWebRequest();
+        if (requestVoteAPI.isNetworkError || requestVoteAPI.isHttpError)
+        {
+            Debug.LogError(requestVoteAPI.error);
+            yield break;
+        }
+
+        JSONNode voteData = JSON.Parse(requestVoteAPI.downloadHandler.text);
+        string check = voteData["message"].ToString().Replace('"', ' ');
+        Debug.Log(check);
+
+        if (check == " already voted ")
+        {
+            VoteResult(false);
+        }
+        else if (check == " submit success ")
+        {
+            VoteResult(true);
+        }
+        else
+        {
+            Debug.LogError("vote failed..");
+        }
     }
     #endregion   
 }
