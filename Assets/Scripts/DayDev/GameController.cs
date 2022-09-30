@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
-    public string base_url;
+    public string base_url = "https://daydev.tech/api/twin/";
     public GameObject window_register, window_login, window_alert;
     public int gender_value = 1;
     public Toggle genders;
@@ -102,7 +102,11 @@ public class GameController : MonoBehaviour
             param = "email=" + str_email + "&password=" + str_password;
             api_url = base_url + "loginget.php" + "?" + param;
             UnityWebRequest www = new UnityWebRequest(api_url);
-            StartCoroutine(FetchResponseLogin(api_url));
+
+            if (PlayerPrefs.GetString("gender") == "1") StartCoroutine(LoadSceneObject("CharacterM"));
+            else StartCoroutine(LoadSceneObject("CharacterF"));
+
+            //StartCoroutine(FetchResponseLogin(api_url));
         }
     }
 
