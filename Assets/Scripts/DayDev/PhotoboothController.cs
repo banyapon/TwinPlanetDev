@@ -55,7 +55,7 @@ public class PhotoboothController : MonoBehaviour
     private void Update()
     {
         _camera.SetActive(false);
-        btnHide.SetActive(false);
+        //btnHide.SetActive(false);
         /*if (playersInPhotobooth == 1)
         {
             gameObject.GetComponent<Collider>().enabled = false;
