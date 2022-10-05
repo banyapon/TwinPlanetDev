@@ -57,16 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\WebView\Scripts\PartnerSO.cs" />
-    <Compile Include="Assets\Plugins\WebView\Scripts\MessagePanel.cs" />
-    <Compile Include="Assets\Plugins\WebView\Scripts\WebMessage.cs" />
     <Compile Include="Assets\Plugins\WebView\Editor\WebViewPostProcessBuild.cs" />
-    <Compile Include="Assets\Plugins\WebView\Scripts\WebViewWindow\AndroidWebViewWindow.cs" />
     <Compile Include="Assets\Plugins\WebView\Scripts\WebViewWindow\WebViewWindowBase.cs" />
-    <Compile Include="Assets\Plugins\WebView\Scripts\WebView.cs" />
     <Compile Include="Assets\Plugins\WebView\Editor\WebViewEditor.cs" />
-    <Compile Include="Assets\Plugins\WebView\Scripts\WebViewOptions.cs" />
-    <Compile Include="Assets\Plugins\WebView\Editor\PartnerPostProcessBuild.cs" />
     <Compile Include="Assets\Plugins\WebView\Scripts\WebViewWindow\IOSWebViewWindow.cs" />
+    <Compile Include="Assets\Plugins\WebView\Editor\PartnerPostProcessBuild.cs" />
+    <Compile Include="Assets\Plugins\WebView\Scripts\WebViewWindow\AndroidWebViewWindow.cs" />
+    <Compile Include="Assets\Plugins\WebView\Scripts\WebMessage.cs" />
+    <Compile Include="Assets\Plugins\WebView\Scripts\MessagePanel.cs" />
+    <Compile Include="Assets\Plugins\WebView\Scripts\WebView.cs" />
+    <Compile Include="Assets\Plugins\WebView\Scripts\WebViewOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\WebView\WebView.asmdef" />

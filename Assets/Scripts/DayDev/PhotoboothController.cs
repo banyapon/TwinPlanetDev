@@ -16,6 +16,7 @@ public class PhotoboothController : MonoBehaviour
     [SerializeField] private GameObject allPanel;
     [SerializeField] private GameObject btnLeave;
     [SerializeField] private GameObject btnHide;
+    [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject _camera;
     private GameObject[] players = new GameObject[2];
     private int currentBG = 0;
@@ -111,9 +112,16 @@ public class PhotoboothController : MonoBehaviour
     {
         Application.OpenURL("https://www.facebook.com/fbcameraeffects/tryit/443925063944157/");
     }
+
+    public void OpenTutorial(bool isActive)
+    {
+        if (tutorialPanel.active) isActive = false;
+        tutorialPanel.SetActive(isActive);
+    }
+
     IEnumerator waitsec()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         allPanel.SetActive(true);
     }
 }
