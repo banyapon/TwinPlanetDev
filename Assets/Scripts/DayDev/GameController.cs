@@ -102,11 +102,7 @@ public class GameController : MonoBehaviour
             param = "email=" + str_email + "&password=" + str_password;
             api_url = base_url + "loginget.php" + "?" + param;
             UnityWebRequest www = new UnityWebRequest(api_url);
-
-            if (PlayerPrefs.GetString("gender") == "1") StartCoroutine(LoadSceneObject("CharacterM"));
-            else StartCoroutine(LoadSceneObject("CharacterF"));
-
-            //StartCoroutine(FetchResponseLogin(api_url));
+            StartCoroutine(FetchResponseLogin(api_url));
         }
     }
 
