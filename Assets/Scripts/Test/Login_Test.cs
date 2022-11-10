@@ -96,8 +96,8 @@ public class Login_Test : MonoBehaviour
 
     public void LoginUserGet()
     {
-        str_email = input_email_login.text != null? input_email_login.text : "twinplanet_test@gmail.com";
-        str_name = input_name_login.text != null? input_name_login.text : "Test";
+        str_email = input_email_login.text != ""? input_email_login.text : "twinplanet_test@gmail.com";
+        str_name = input_name_login.text != ""? input_name_login.text : "Test";
         gender_value = gender_dropdown.value;
 
         if (str_email == "" || str_name == "")

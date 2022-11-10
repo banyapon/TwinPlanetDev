@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Payload.unity
     guid: f62d57a8c471de54c845a9778dd9d3fd
   - enabled: 0
+    path: Assets/Scenes/Test Scenes/TestLogin.unity
+    guid: 1b95d848adaee8c43bc3d8fd52fd7b2d
+  - enabled: 0
     path: Assets/Scenes/Login.unity
     guid: abf2c2f54a250d547935e2ea844a0150
   - enabled: 1

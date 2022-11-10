@@ -20674,6 +20674,7 @@ MonoBehaviour:
   agent: {fileID: 1824230128}
   photonView: {fileID: 1824230129}
   characterEditor: {fileID: 1824230126}
+  characterCreate: {fileID: 0}
   flower: {fileID: 0}
   micName: 
   playerMicToggle: {fileID: 0}
@@ -20689,6 +20690,7 @@ MonoBehaviour:
   isWalk: 0
   isStop: 0
   cameraType: 0
+  isUseRPM: 0
 --- !u!114 &8333985296614885837
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ namespace AD
         public NavMeshAgent agent;
         public new PhotonView photonView; //
         public CharacterEditor characterEditor;
+        public CharacterCreate characterCreate;
         [HideInInspector] public GameObject flower;
         [HideInInspector] public string micName;
         [HideInInspector] public ToggleMic playerMicToggle;
@@ -54,6 +55,8 @@ namespace AD
         [HideInInspector] public bool isStop = false;
         public enum CameraType { OLD_CAMERA, NEW_CAMERA };
         public CameraType cameraType;
+
+        [SerializeField] private bool isUseRPM;
         #endregion
 
         public enum AnimationName { Idle, Walk, Excited, Giving, Hug, Sit, Laugh, Hi, Marry }
@@ -138,6 +141,7 @@ namespace AD
             bio = PlayerPrefs.GetString("bio");
             nameTMP.text = nickname; 
             characterEditor.Load();
+            //characterCreate.LoadAvatar(PlayerPrefs.GetString("Avatar"));
             photonView.RPC("CharacterData", RpcTarget.OthersBuffered, nickname, fullname, gender, bio, characterEditor.GetHatIndex(), characterEditor.GetFaceIndex(), characterEditor.GetGlassesIndex(), characterEditor.GetBodyIndex(), characterEditor.GetTopIndex(), characterEditor.GetBottomIndex(), characterEditor.GetFootwearIndex());
         }
 

@@ -13,17 +13,19 @@ public class CharacterCreate : MonoBehaviour
     [SerializeField] private Transform _playerPos;
 
     [Header("Animator")]
+    [SerializeField] private Animator _animator;
     [SerializeField] private RuntimeAnimatorController _animatorController;
-    [SerializeField] private Avatar _animatorAvatar;
 
     private GameObject avatar;
+
+    [SerializeField] private bool isEdit;
 
     private void Start()
     {
         PartnerSO partner = Resources.Load<PartnerSO>("Partner");
         WebInterface.SetupRpmFrame(partner.Subdomain);
 
-        OnWebViewAvatarGenerated(avatarUrl);
+        if (isEdit) OnWebViewAvatarGenerated(avatarUrl);
     }
 
     public void OnWebViewAvatarGenerated(string generatedUrl)
@@ -33,22 +35,24 @@ public class CharacterCreate : MonoBehaviour
         avatarLoader.OnCompleted += OnAvatarLoadCompleted;
         avatarLoader.OnFailed += OnAvatarLoadFailed;
         avatarLoader.LoadAvatar(avatarUrl);
+        PlayerPrefs.SetString("Avatar", avatarUrl);
     }
+
+    public void LoadAvatar(string avatarUrl) => OnWebViewAvatarGenerated(avatarUrl);
 
     private void OnAvatarLoadCompleted(object sender, CompletionEventArgs args)
     {
         if (avatar) Destroy(avatar);
         avatar = args.Avatar;
-        Animator animator = avatar.GetComponent<Animator>();
 
         //Set to parent position
         avatar.transform.SetParent(_playerPos);
         avatar.transform.localPosition = Vector3.zero;
         avatar.transform.localEulerAngles = Vector3.zero;
 
-        //Assign animator component
-        animator.runtimeAnimatorController = _animatorController;
-        animator.avatar = _animatorAvatar;
+        //Remove animator component
+        Destroy(avatar.GetComponent<Animator>());
+        _animator.runtimeAnimatorController = _animatorController;
     }
 
     private void OnAvatarLoadFailed(object sender, FailureEventArgs args)
