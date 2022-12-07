@@ -12,7 +12,7 @@ public class SceneOpener : Editor
     [MenuItem("Scenes/Login")]
     static void Login()
     {
-        EditorSceneManager.OpenScene("Assets/Scenes/Login.unity");
+        EditorSceneManager.OpenScene("Assets/Scenes/TestLogin.unity");
     }
 
     [MenuItem("Scenes/CharacterM")]
